@@ -10,14 +10,19 @@ import MetalKit
 
 class GameView: MTKView {
     
+    struct Vertex {
+        var position: float3
+        var color: float4
+    }
+    
     private var commandQueue: MTLCommandQueue!
     private var renderPipelineState: MTLRenderPipelineState!
     private var vertexBuffer: MTLBuffer!
     
-    private let vertices: [float3] = [
-        float3(0, 0.5, 0),      // Top Middle
-        float3(-0.5, -0.5, 0),  // Bottom Left
-        float3(0.5, -0.5, 0)    // Bottom right
+    private let vertices: [Vertex] = [
+        Vertex(position: float3(0, 0.5, 0), color: float4(1, 0, 0, 1)),         // Top Middle
+        Vertex(position: float3(-0.5, -0.5, 0), color: float4(0, 1, 0, 1)),     // Bottom Left
+        Vertex(position: float3(0.5, -0.5, 0), color: float4(0, 0, 1, 1))       // Bottom right
     ]
     
     required init(coder: NSCoder) {
@@ -53,7 +58,7 @@ class GameView: MTKView {
     
     private func createBuffers() {
         self.vertexBuffer = self.device?.makeBuffer(bytes: self.vertices,
-                                                    length: MemoryLayout<float3>.stride * self.vertices.count,
+                                                    length: MemoryLayout<Vertex>.stride * self.vertices.count,
                                                     options: [])
     }
     
