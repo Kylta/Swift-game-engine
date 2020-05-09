@@ -9,10 +9,10 @@
 import MetalKit
 
 class Renderer: NSObject, MTKViewDelegate {
-    private let gameObject: GameObject
+    private let player: Player
     
     override init() {
-        self.gameObject = GameObject()
+        self.player = Player()
         
         super.init()
     }
@@ -26,7 +26,7 @@ class Renderer: NSObject, MTKViewDelegate {
         let commandBuffer = Engine.shared.commandQueue.makeCommandBuffer()!
         let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)!
         
-        self.gameObject.render(renderCommandEncoder)
+        self.player.render(renderCommandEncoder)
         
         renderCommandEncoder.endEncoding()
         

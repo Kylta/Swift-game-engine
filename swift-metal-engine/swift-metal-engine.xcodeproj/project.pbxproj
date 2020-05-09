@@ -31,6 +31,11 @@
 		463786A62467103F00B77415 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463786A52467103F00B77415 /* Preferences.swift */; };
 		463786A924672D9100B77415 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463786A824672D9100B77415 /* GameObject.swift */; };
 		463786AB2467336A00B77415 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463786AA2467336A00B77415 /* Renderer.swift */; };
+		46CE30EC246738C60097B4CE /* MeshLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE30EB246738C60097B4CE /* MeshLibrary.swift */; };
+		46CE30EE246739AD0097B4CE /* Meshes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE30ED246739AD0097B4CE /* Meshes.swift */; };
+		46CE30F0246742150097B4CE /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE30EF246742150097B4CE /* Player.swift */; };
+		46CE30F2246743070097B4CE /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE30F1246743070097B4CE /* Node.swift */; };
+		46CE30F5246743B30097B4CE /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE30F4246743B30097B4CE /* Renderable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +65,11 @@
 		463786A52467103F00B77415 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		463786A824672D9100B77415 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		463786AA2467336A00B77415 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		46CE30EB246738C60097B4CE /* MeshLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshLibrary.swift; sourceTree = "<group>"; };
+		46CE30ED246739AD0097B4CE /* Meshes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meshes.swift; sourceTree = "<group>"; };
+		46CE30EF246742150097B4CE /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		46CE30F1246743070097B4CE /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		46CE30F4246743B30097B4CE /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +105,7 @@
 				463786852466E0D100B77415 /* Helpers */,
 				4637868E2466FF8900B77415 /* Core */,
 				4637868D2466FF0400B77415 /* Libraries */,
-				463786A724672D6300B77415 /* GameObject */,
+				463786A724672D6300B77415 /* Game */,
 				4637868A2466FC7C00B77415 /* Model */,
 				4637867D2466D6F100B77415 /* Main */,
 				463786802466DC1B00B77415 /* Controllers */,
@@ -167,6 +177,7 @@
 				4637869B2467092C00B77415 /* VertexDescriptor.swift */,
 				4637869F24670A9D00B77415 /* RenderPipelineDescriptor.swift */,
 				463786A324670E1E00B77415 /* RenderPipelineState.swift */,
+				46CE30ED246739AD0097B4CE /* Meshes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,6 +189,7 @@
 				463786992467086300B77415 /* VertexDescriptorLibrary.swift */,
 				4637869D24670A4300B77415 /* RenderPipelineDescriptorLibrary.swift */,
 				463786A124670E0D00B77415 /* RenderPipelineStateLibrary.swift */,
+				46CE30EB246738C60097B4CE /* MeshLibrary.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -193,12 +205,31 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		463786A724672D6300B77415 /* GameObject */ = {
+		463786A724672D6300B77415 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				46CE30F3246743A50097B4CE /* Protocols */,
+				46CE30F62467445F0097B4CE /* Game Objects */,
+				46CE30F1246743070097B4CE /* Node.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		46CE30F3246743A50097B4CE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				46CE30F4246743B30097B4CE /* Renderable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		46CE30F62467445F0097B4CE /* Game Objects */ = {
 			isa = PBXGroup;
 			children = (
 				463786A824672D9100B77415 /* GameObject.swift */,
+				46CE30EF246742150097B4CE /* Player.swift */,
 			);
-			path = GameObject;
+			path = "Game Objects";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,13 +304,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				4637869C2467092C00B77415 /* VertexDescriptor.swift in Sources */,
+				46CE30F2246743070097B4CE /* Node.swift in Sources */,
 				463786A924672D9100B77415 /* GameObject.swift in Sources */,
 				463786982467041C00B77415 /* Shaders.swift in Sources */,
 				4637866D2466D6CF00B77415 /* ViewController.swift in Sources */,
+				46CE30F0246742150097B4CE /* Player.swift in Sources */,
 				463786692466D6CF00B77415 /* AppDelegate.swift in Sources */,
 				463786872466E0DC00B77415 /* SIMD+extensions.swift in Sources */,
+				46CE30EE246739AD0097B4CE /* Meshes.swift in Sources */,
 				4637869A2467086300B77415 /* VertexDescriptorLibrary.swift in Sources */,
 				46378694246701BF00B77415 /* MTLPixelFormat+extensions.swift in Sources */,
+				46CE30F5246743B30097B4CE /* Renderable.swift in Sources */,
 				463786922467016500B77415 /* MTLClearColors+extensions.swift in Sources */,
 				4637867F2466D7D300B77415 /* GameView.swift in Sources */,
 				4637866B2466D6CF00B77415 /* SceneDelegate.swift in Sources */,
@@ -288,6 +323,7 @@
 				463786902466FF9200B77415 /* Engine.swift in Sources */,
 				4637868C2466FC8F00B77415 /* Vertices.swift in Sources */,
 				463786A424670E1E00B77415 /* RenderPipelineState.swift in Sources */,
+				46CE30EC246738C60097B4CE /* MeshLibrary.swift in Sources */,
 				463786AB2467336A00B77415 /* Renderer.swift in Sources */,
 				463786A224670E0D00B77415 /* RenderPipelineStateLibrary.swift in Sources */,
 				463786842466DC3800B77415 /* Shaders.metal in Sources */,
