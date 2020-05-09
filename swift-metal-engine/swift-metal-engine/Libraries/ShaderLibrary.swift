@@ -13,7 +13,7 @@ enum ShaderType {
 }
 
 class ShaderLibrary {
-    private(set) var shaders: [ShaderType: (vertex: Shader, fragment: Shader)] = [:]
+    private var shaders: [ShaderType: (vertex: Shader, fragment: Shader)] = [:]
     private(set) var library: MTLLibrary!
     
     static let shared = ShaderLibrary()

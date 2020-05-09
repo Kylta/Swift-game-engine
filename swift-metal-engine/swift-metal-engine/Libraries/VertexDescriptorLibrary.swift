@@ -9,7 +9,7 @@
 import MetalKit
 
 class VertexDescriptorLibrary {
-    private(set) var descriptors: [ShaderType: VertexDescriptor] = [:]
+    private var descriptors: [ShaderType: VertexDescriptor] = [:]
     
     static let shared = VertexDescriptorLibrary()
     
