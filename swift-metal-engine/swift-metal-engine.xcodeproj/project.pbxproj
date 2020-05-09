@@ -16,6 +16,7 @@
 		4637867F2466D7D300B77415 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4637867E2466D7D300B77415 /* GameView.swift */; };
 		463786842466DC3800B77415 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 463786832466DC3800B77415 /* Shaders.metal */; };
 		463786872466E0DC00B77415 /* SIMD+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463786862466E0DC00B77415 /* SIMD+extensions.swift */; };
+		4637868C2466FC8F00B77415 /* Vertices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4637868B2466FC8F00B77415 /* Vertices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4637867E2466D7D300B77415 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		463786832466DC3800B77415 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		463786862466E0DC00B77415 /* SIMD+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SIMD+extensions.swift"; sourceTree = "<group>"; };
+		4637868B2466FC8F00B77415 /* Vertices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		463786672466D6CF00B77415 /* swift-metal-engine */ = {
 			isa = PBXGroup;
 			children = (
+				4637868A2466FC7C00B77415 /* Vertices */,
 				463786852466E0D100B77415 /* Helpers */,
 				4637867D2466D6F100B77415 /* Main */,
 				463786802466DC1B00B77415 /* Controllers */,
@@ -122,6 +125,14 @@
 				463786862466E0DC00B77415 /* SIMD+extensions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4637868A2466FC7C00B77415 /* Vertices */ = {
+			isa = PBXGroup;
+			children = (
+				4637868B2466FC8F00B77415 /* Vertices.swift */,
+			);
+			path = Vertices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +211,7 @@
 				463786872466E0DC00B77415 /* SIMD+extensions.swift in Sources */,
 				4637867F2466D7D300B77415 /* GameView.swift in Sources */,
 				4637866B2466D6CF00B77415 /* SceneDelegate.swift in Sources */,
+				4637868C2466FC8F00B77415 /* Vertices.swift in Sources */,
 				463786842466DC3800B77415 /* Shaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

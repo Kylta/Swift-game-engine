@@ -9,12 +9,6 @@
 import MetalKit
 
 class GameView: MTKView {
-    
-    struct Vertex {
-        var position: float3
-        var color: float4
-    }
-    
     private var commandQueue: MTLCommandQueue!
     private var renderPipelineState: MTLRenderPipelineState!
     private var vertexBuffer: MTLBuffer!
@@ -58,7 +52,7 @@ class GameView: MTKView {
     
     private func createBuffers() {
         self.vertexBuffer = self.device?.makeBuffer(bytes: self.vertices,
-                                                    length: MemoryLayout<Vertex>.stride * self.vertices.count,
+                                                    length: Vertex.stride(self.vertices.count),
                                                     options: [])
     }
     
@@ -67,10 +61,25 @@ class GameView: MTKView {
         let vertexFunction = library?.makeFunction(name: "basic_vertex_shader")
         let fragmentFunction = library?.makeFunction(name: "basic_fragment_shader")
         
+        let vertexDescriptor = MTLVertexDescriptor()
+        
+        // Position
+        vertexDescriptor.attributes[0].format = .float3
+        vertexDescriptor.attributes[0].bufferIndex = 0
+        vertexDescriptor.attributes[0].offset = 0
+        
+        // Color
+        vertexDescriptor.attributes[1].format = .float4
+        vertexDescriptor.attributes[1].bufferIndex = 0
+        vertexDescriptor.attributes[1].offset = float3.size()
+        
+        vertexDescriptor.layouts[0].stride = Vertex.stride()
+        
         let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
         renderPipelineDescriptor.colorAttachments[0].pixelFormat = self.colorPixelFormat
         renderPipelineDescriptor.vertexFunction = vertexFunction
         renderPipelineDescriptor.fragmentFunction = fragmentFunction
+        renderPipelineDescriptor.vertexDescriptor = vertexDescriptor
         
         self.renderPipelineState = try! self.device?.makeRenderPipelineState(descriptor: renderPipelineDescriptor)
     }
