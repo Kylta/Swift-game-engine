@@ -10,8 +10,15 @@ import MetalKit
 
 class GameView: MTKView {
     
-    var commandQueue: MTLCommandQueue!
-    var renderPipelineState: MTLRenderPipelineState!
+    private var commandQueue: MTLCommandQueue!
+    private var renderPipelineState: MTLRenderPipelineState!
+    private var vertexBuffer: MTLBuffer!
+    
+    private let vertices: [float3] = [
+        float3(0, 0.5, 0),      // Top Middle
+        float3(-0.5, -0.5, 0),  // Bottom Left
+        float3(0.5, -0.5, 0)    // Bottom right
+    ]
     
     required init(coder: NSCoder) {
         super.init(coder: coder)
@@ -21,6 +28,8 @@ class GameView: MTKView {
         self.colorPixelFormat = .bgra8Unorm
         
         self.commandQueue = self.device?.makeCommandQueue()
+        
+        self.createBuffers()
         
         self.createRenderPipelineState()
     }
@@ -33,11 +42,19 @@ class GameView: MTKView {
         let renderCommandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
         
         renderCommandEncoder?.setRenderPipelineState(self.renderPipelineState)
+        renderCommandEncoder?.setVertexBuffer(self.vertexBuffer, offset: 0, index: 0)
+        renderCommandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: self.vertices.count)
         
         renderCommandEncoder?.endEncoding()
         
         commandBuffer?.present(drawable)
         commandBuffer?.commit()
+    }
+    
+    private func createBuffers() {
+        self.vertexBuffer = self.device?.makeBuffer(bytes: self.vertices,
+                                                    length: MemoryLayout<float3>.stride * self.vertices.count,
+                                                    options: [])
     }
     
     private func createRenderPipelineState() {
