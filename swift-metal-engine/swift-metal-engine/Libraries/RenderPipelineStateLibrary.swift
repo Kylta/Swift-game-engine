@@ -9,7 +9,7 @@
 import MetalKit
 
 class RenderPipelineStateLibrary {
-    private(set) var renderPipelineState: [ShaderType: RenderPipelineState] = [:]
+    private var renderPipelineState: [ShaderType: RenderPipelineState] = [:]
     
     static let shared = RenderPipelineStateLibrary()
     

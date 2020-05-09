@@ -9,7 +9,7 @@
 import MetalKit
 
 class RenderPipelineDescriptorLibrary {
-    private(set) var renderPipelineDescriptors: [ShaderType: RenderPipelineDescriptor] = [:]
+    private var renderPipelineDescriptors: [ShaderType: RenderPipelineDescriptor] = [:]
     
     static let shared = RenderPipelineDescriptorLibrary()
     
