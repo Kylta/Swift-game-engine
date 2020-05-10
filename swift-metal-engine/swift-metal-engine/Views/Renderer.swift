@@ -9,14 +9,6 @@
 import MetalKit
 
 class Renderer: NSObject, MTKViewDelegate {
-    private let player: Player
-    
-    override init() {
-        self.player = Player()
-        
-        super.init()
-    }
-    
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}
     
     func draw(in view: MTKView) {
@@ -26,8 +18,8 @@ class Renderer: NSObject, MTKViewDelegate {
         let commandBuffer = Engine.shared.commandQueue.makeCommandBuffer()!
         let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)!
         
-        self.player.update(deltaTime: 1 / Float(view.preferredFramesPerSecond))
-        self.player.render(renderCommandEncoder)
+        SceneManager.shared.tickScene(renderCommandEncoder: renderCommandEncoder,
+                                      deltaTime: 1 / Float(view.preferredFramesPerSecond))
         
         renderCommandEncoder.endEncoding()
         

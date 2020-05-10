@@ -23,15 +23,25 @@ class Node {
         return matrix
     }
     
+    private(set) var children: [Node]
+    
     init() {
         self.position = float3(repeating: 0)
         self.scale = float3(repeating: 1)
         self.rotation = float3(repeating: 0)
+        self.children = []
     }
     
     func render(_ renderCommandEncoder: MTLRenderCommandEncoder) {
-        guard let renderable = self as? Renderable else { return }
-        renderable.doRender(renderCommandEncoder)
+        self.children.forEach { $0.render(renderCommandEncoder) }
+        
+        if let renderable = self as? Renderable {
+            renderable.doRender(renderCommandEncoder)
+        }
+    }
+    
+    func update(deltaTime: Float) {
+        self.children.forEach { $0.update(deltaTime: deltaTime) }
     }
     
     func update(position: float2) {
@@ -44,6 +54,10 @@ class Node {
     }
     
     func update(rotation: Float) {
-        self.rotation.z = rotation
+        self.rotation.z += rotation
+    }
+    
+    func addChild(_ child: Node) {
+        self.children.append(child)
     }
 }

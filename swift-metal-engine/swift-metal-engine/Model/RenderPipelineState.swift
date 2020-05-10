@@ -10,7 +10,7 @@ import MetalKit
 
 protocol RenderPipelineState {
     var name: String { get }
-    var renderPipelineState: MTLRenderPipelineState { get }
+    var renderPipelineState: MTLRenderPipelineState! { get }
 }
 
 struct BasicRenderPipelineState: RenderPipelineState {
@@ -18,8 +18,10 @@ struct BasicRenderPipelineState: RenderPipelineState {
         return "Basic Render Pipeline State"
     }
     
-    var renderPipelineState: MTLRenderPipelineState {
+    private(set) var renderPipelineState: MTLRenderPipelineState!
+    
+    init() {
         let desc = RenderPipelineDescriptorLibrary.shared.descriptor(.basic)
-        return try! Engine.shared.device.makeRenderPipelineState(descriptor: desc)
+        self.renderPipelineState = try! Engine.shared.device.makeRenderPipelineState(descriptor: desc)
     }
 }

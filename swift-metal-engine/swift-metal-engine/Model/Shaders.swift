@@ -11,7 +11,7 @@ import MetalKit
 protocol Shader {
     var name: String { get }
     var functionName: String { get }
-    var function: MTLFunction { get }
+    var function: MTLFunction! { get }
 }
 
 struct BasicVertexShader: Shader {
@@ -23,10 +23,11 @@ struct BasicVertexShader: Shader {
         return "basic_vertex_shader"
     }
     
-    var function: MTLFunction {
-        let function = ShaderLibrary.shared.library.makeFunction(name: functionName)!
+    private(set) var function: MTLFunction!
+    
+    init(library: MTLLibrary){
+        self.function = library.makeFunction(name: functionName)!
         function.label = name
-        return function
     }
 }
 
@@ -39,9 +40,10 @@ struct BasicFragmentShader: Shader {
         return "basic_fragment_shader"
     }
     
-    var function: MTLFunction {
-        let function = ShaderLibrary.shared.library.makeFunction(name: functionName)!
+    private(set) var function: MTLFunction!
+    
+    init(library: MTLLibrary) {
+        self.function = library.makeFunction(name: functionName)!
         function.label = name
-        return function
     }
 }

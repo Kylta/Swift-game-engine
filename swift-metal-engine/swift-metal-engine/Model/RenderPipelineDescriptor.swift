@@ -10,7 +10,7 @@ import MetalKit
 
 protocol RenderPipelineDescriptor {
     var name: String { get }
-    var renderPipelineDescriptor: MTLRenderPipelineDescriptor { get }
+    var renderPipelineDescriptor: MTLRenderPipelineDescriptor! { get }
 }
 
 struct BasicRenderPipelineDescriptor: RenderPipelineDescriptor {
@@ -18,12 +18,13 @@ struct BasicRenderPipelineDescriptor: RenderPipelineDescriptor {
         return "Basic Render Pipeline Descriptor"
     }
     
-    var renderPipelineDescriptor: MTLRenderPipelineDescriptor {
-        let rpd = MTLRenderPipelineDescriptor()
-        rpd.colorAttachments[0].pixelFormat = Preferences.pixelFormat
-        rpd.vertexFunction = ShaderLibrary.shared.vertexFunction(.basic)
-        rpd.fragmentFunction = ShaderLibrary.shared.fragmentFunction(.basic)
-        rpd.vertexDescriptor = VertexDescriptorLibrary.shared.descriptor(.basic)
-        return rpd
+    private(set) var renderPipelineDescriptor: MTLRenderPipelineDescriptor!
+    
+    init() {
+        self.renderPipelineDescriptor = MTLRenderPipelineDescriptor()
+        self.renderPipelineDescriptor.colorAttachments[0].pixelFormat = Preferences.pixelFormat
+        self.renderPipelineDescriptor.vertexFunction = ShaderLibrary.shared.vertexFunction(.basic)
+        self.renderPipelineDescriptor.fragmentFunction = ShaderLibrary.shared.fragmentFunction(.basic)
+        self.renderPipelineDescriptor.vertexDescriptor = VertexDescriptorLibrary.shared.descriptor(.basic)
     }
 }
