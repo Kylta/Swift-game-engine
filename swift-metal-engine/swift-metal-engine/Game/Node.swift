@@ -9,7 +9,7 @@
 import MetalKit
 
 class Node {
-    private var position: float3
+    private(set) var position: float3
     private var scale: float3
     private var rotation: float3
     
@@ -54,7 +54,7 @@ class Node {
     }
     
     func update(rotation: Float) {
-        self.rotation.z += rotation
+        self.rotation.z = rotation
     }
     
     func addChild(_ child: Node) {

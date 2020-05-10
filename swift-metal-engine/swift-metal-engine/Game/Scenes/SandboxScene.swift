@@ -10,20 +10,16 @@ import MetalKit
 
 class SandboxScene: Scene {
     override func buildScene() {
-        for y in -5..<5 {
-            for x in -5..<5 {
+        let count: Int = 5
+        for y in -count..<count {
+            for x in -count..<count {
                 let player = Player()
-                let y = (Float(y) + 0.5) / 5
-                let x = (Float(x) + 0.5) / 5
+                let y = (Float(y) + 0.5) / Float(count)
+                let x = (Float(x) + 0.5) / Float(count)
                 player.update(position: float2(y, x))
                 player.update(scale: float3(repeating: 0.1))
                 self.addChild(player)
             }
         }
-    }
-    
-    override func update(deltaTime: Float) {
-        self.children.forEach { $0.update(rotation: deltaTime) }
-        super.update(deltaTime: deltaTime)
     }
 }

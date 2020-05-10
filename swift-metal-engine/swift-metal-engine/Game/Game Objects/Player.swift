@@ -11,6 +11,11 @@ import MetalKit
 class Player: GameObject {
     
     init() {
-        super.init(meshType: .quad, shaderType: .basic)
+        super.init(meshType: .triangle, shaderType: .basic)
+    }
+    
+    override func update(deltaTime: Float) {
+        self.update(rotation: -atan2f(GameView.position.x - position.x, GameView.position.y - position.y))
+        super.update(deltaTime: deltaTime)
     }
 }
