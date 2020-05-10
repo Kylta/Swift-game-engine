@@ -35,6 +35,8 @@ extension SIMD {
     }
 }
 
+extension Float: Sizeable {}
+
 extension Sizeable {
     static func size() -> Int {
         return MemoryLayout<Self>.size
@@ -51,4 +53,8 @@ extension Sizeable {
     static func stride(_ count: Int) -> Int {
         return MemoryLayout<Self>.stride * count
     }
+}
+
+struct ModelConstants: Sizeable {
+    var modelMatrix = matrix_identity_float4x4
 }

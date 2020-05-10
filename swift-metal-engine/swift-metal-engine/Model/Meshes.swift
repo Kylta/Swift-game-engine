@@ -43,13 +43,13 @@ class TriangleCustomMesh: CustomMesh {
 class QuadCustomMesh: CustomMesh {
     override func createVertices() {
         self.vertices = [            
-            Vertex(position: float3(0.5,0.5,0), color: float4(1,0,0,1)),        // Top Right
-            Vertex(position: float3(-0.5,0.5,0), color: float4(0,1,0,1)),       // Top Left
-            Vertex(position: float3(-0.5,-0.5,0), color: float4(0,0,1,1)),      // Bot Left
+            Vertex(position: float3(1,1,0), color: float4(1,0,0,1)),        // Top Right
+            Vertex(position: float3(-1,1,0), color: float4(0,1,0,1)),       // Top Left
+            Vertex(position: float3(-1,-1,0), color: float4(0,0,1,1)),      // Bot Left
             
-            Vertex(position: float3(0.5,0.5,0), color: float4(1,0,0,1)),        // Top Right
-            Vertex(position: float3(-0.5,-0.5,0), color: float4(0,0,1,1)),      // Bot Left
-            Vertex(position: float3(0.5,-0.5,0), color: float4(1,0,1,1)),       // Bot Right
+            Vertex(position: float3(1,1,0), color: float4(1,0,0,1)),        // Top Right
+            Vertex(position: float3(-1,-1,0), color: float4(0,0,1,1)),      // Bot Left
+            Vertex(position: float3(1,-1,0), color: float4(1,0,1,1)),       // Bot Right
         ]
     }
 }

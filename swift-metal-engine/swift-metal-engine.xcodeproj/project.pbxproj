@@ -36,6 +36,7 @@
 		46CE30F0246742150097B4CE /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE30EF246742150097B4CE /* Player.swift */; };
 		46CE30F2246743070097B4CE /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE30F1246743070097B4CE /* Node.swift */; };
 		46CE30F5246743B30097B4CE /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE30F4246743B30097B4CE /* Renderable.swift */; };
+		46CE3120246847D90097B4CE /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE311F246847D90097B4CE /* Math.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		46CE30EF246742150097B4CE /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		46CE30F1246743070097B4CE /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		46CE30F4246743B30097B4CE /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
+		46CE311F246847D90097B4CE /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		463786672466D6CF00B77415 /* swift-metal-engine */ = {
 			isa = PBXGroup;
 			children = (
+				46CE311E246847CB0097B4CE /* Maths */,
 				463786852466E0D100B77415 /* Helpers */,
 				4637868E2466FF8900B77415 /* Core */,
 				4637868D2466FF0400B77415 /* Libraries */,
@@ -232,6 +235,14 @@
 			path = "Game Objects";
 			sourceTree = "<group>";
 		};
+		46CE311E246847CB0097B4CE /* Maths */ = {
+			isa = PBXGroup;
+			children = (
+				46CE311F246847D90097B4CE /* Math.swift */,
+			);
+			path = Maths;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -314,6 +325,7 @@
 				46CE30EE246739AD0097B4CE /* Meshes.swift in Sources */,
 				4637869A2467086300B77415 /* VertexDescriptorLibrary.swift in Sources */,
 				46378694246701BF00B77415 /* MTLPixelFormat+extensions.swift in Sources */,
+				46CE3120246847D90097B4CE /* Math.swift in Sources */,
 				46CE30F5246743B30097B4CE /* Renderable.swift in Sources */,
 				463786922467016500B77415 /* MTLClearColors+extensions.swift in Sources */,
 				4637867F2466D7D300B77415 /* GameView.swift in Sources */,
