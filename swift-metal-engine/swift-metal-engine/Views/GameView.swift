@@ -9,7 +9,7 @@
 import MetalKit
 
 class GameView: MTKView {
-    static var position: float2 = float2(0,0)
+    private(set) static var position: float2 = float2(0,0)
     
     private let renderer: Renderer
     
