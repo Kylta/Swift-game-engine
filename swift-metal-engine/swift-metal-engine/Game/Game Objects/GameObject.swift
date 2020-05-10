@@ -21,13 +21,7 @@ class GameObject: Node {
         self.modelConstants = ModelConstants()
     }
     
-    func update(deltaTime: Float) {
-        self.time += deltaTime
-        
-        self.update(position: float2(cos(self.time), sin(self.time)))
-        self.update(scale: float3(repeating: cos(self.time)))
-        self.update(rotation: cos(self.time))
-        
+    override func update(deltaTime: Float) {
         self.updateModelConstants()
     }
     

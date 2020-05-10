@@ -10,7 +10,7 @@ import MetalKit
 
 protocol VertexDescriptor {
     var name: String { get }
-    var vertexDescriptor: MTLVertexDescriptor { get }
+    var vertexDescriptor: MTLVertexDescriptor! { get }
 }
 
 struct BasicVertexDescriptor: VertexDescriptor {
@@ -18,20 +18,21 @@ struct BasicVertexDescriptor: VertexDescriptor {
         return "Basic Vertex Descriptor"
     }
     
-    var vertexDescriptor: MTLVertexDescriptor {
-        let desc = MTLVertexDescriptor()
+    private(set) var vertexDescriptor: MTLVertexDescriptor!
+    
+    init() {
+        self.vertexDescriptor = MTLVertexDescriptor()
         
         // Position
-        desc.attributes[0].format = .float3
-        desc.attributes[0].bufferIndex = 0
-        desc.attributes[0].offset = 0
+        self.vertexDescriptor.attributes[0].format = .float3
+        self.vertexDescriptor.attributes[0].bufferIndex = 0
+        self.vertexDescriptor.attributes[0].offset = 0
         
         // Color
-        desc.attributes[1].format = .float4
-        desc.attributes[1].bufferIndex = 0
-        desc.attributes[1].offset = float3.size()
+        self.vertexDescriptor.attributes[1].format = .float4
+        self.vertexDescriptor.attributes[1].bufferIndex = 0
+        self.vertexDescriptor.attributes[1].offset = float3.size()
         
-        desc.layouts[0].stride = Vertex.stride()
-        return desc
+        self.vertexDescriptor.layouts[0].stride = Vertex.stride()
     }
 }

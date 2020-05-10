@@ -20,8 +20,8 @@ class ShaderLibrary {
     
     private init() {
         self.library = Engine.shared.device.makeDefaultLibrary()
-        let basicVertex = BasicVertexShader()
-        let basicFragment = BasicFragmentShader()
+        let basicVertex = BasicVertexShader(library: library)
+        let basicFragment = BasicFragmentShader(library: library)
         self.shaders.updateValue((basicVertex, basicFragment), forKey: .basic)
     }
     
