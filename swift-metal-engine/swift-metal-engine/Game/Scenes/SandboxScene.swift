@@ -21,9 +21,4 @@ class SandboxScene: Scene {
             }
         }
     }
-    
-    override func update(deltaTime: Float) {
-        self.children.forEach { $0.update(rotation: deltaTime) }
-        super.update(deltaTime: deltaTime)
-    }
 }
