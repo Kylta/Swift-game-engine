@@ -17,7 +17,7 @@ protocol Sizeable {
     static func stride(_ count: Int) -> Int
 }
 
-extension SIMD {
+extension SIMD {    
     static func size() -> Int {
         return MemoryLayout<Self>.size
     }
@@ -62,4 +62,9 @@ struct ModelConstants: Sizeable {
 struct SceneConstants: Sizeable {
     var viewMatrix = matrix_identity_float4x4
     var projectionMatrix = matrix_identity_float4x4
+}
+
+struct Material: Sizeable {
+    var color = float4(0.8,0.8,0.8,1)
+    var useMaterialColor: Bool = false
 }

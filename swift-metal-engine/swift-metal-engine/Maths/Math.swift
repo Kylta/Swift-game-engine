@@ -28,6 +28,16 @@ extension Float {
     var toDegrees: Float {
         return self * (180.0 / .pi)
     }
+    
+    static var random: Float {
+        return Float(drand48())
+    }
+}
+
+extension CGFloat {
+    static var random: CGFloat {
+        return CGFloat(drand48())
+    }
 }
 
 extension matrix_float4x4 {
