@@ -33,7 +33,7 @@ class GameObject: Node {
 extension GameObject: Renderable {
     func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder) {
         renderCommandEncoder.setRenderPipelineState(self.renderPipelineState)
-        renderCommandEncoder.setVertexBytes(&self.modelConstants, length: ModelConstants.size(), index: 1)
+        renderCommandEncoder.setVertexBytes(&self.modelConstants, length: ModelConstants.size(), index: 2)
         renderCommandEncoder.setVertexBuffer(self.mesh.vertexBuffer, offset: 0, index: 0)
         renderCommandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: self.mesh.vertexCount)
     }
