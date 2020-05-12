@@ -34,6 +34,9 @@
 		4665B65A246AD9F300C00242 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665B659246AD9F300C00242 /* Camera.swift */; };
 		4665B65C246ADABA00C00242 /* DebugCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665B65B246ADABA00C00242 /* DebugCamera.swift */; };
 		4665B65E246ADEF600C00242 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665B65D246ADEF600C00242 /* CameraManager.swift */; };
+		4665B660246AF5E500C00242 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665B65F246AF5E500C00242 /* Cube.swift */; };
+		4665B662246AF80300C00242 /* DepthStencilStateLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665B661246AF80300C00242 /* DepthStencilStateLibrary.swift */; };
+		4665B664246AF94C00C00242 /* DepthStencilState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4665B663246AF94C00C00242 /* DepthStencilState.swift */; };
 		46CE30EC246738C60097B4CE /* MeshLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE30EB246738C60097B4CE /* MeshLibrary.swift */; };
 		46CE30EE246739AD0097B4CE /* Meshes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE30ED246739AD0097B4CE /* Meshes.swift */; };
 		46CE30F0246742150097B4CE /* Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE30EF246742150097B4CE /* Pointer.swift */; };
@@ -75,6 +78,9 @@
 		4665B659246AD9F300C00242 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		4665B65B246ADABA00C00242 /* DebugCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugCamera.swift; sourceTree = "<group>"; };
 		4665B65D246ADEF600C00242 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		4665B65F246AF5E500C00242 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
+		4665B661246AF80300C00242 /* DepthStencilStateLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthStencilStateLibrary.swift; sourceTree = "<group>"; };
+		4665B663246AF94C00C00242 /* DepthStencilState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthStencilState.swift; sourceTree = "<group>"; };
 		46CE30EB246738C60097B4CE /* MeshLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshLibrary.swift; sourceTree = "<group>"; };
 		46CE30ED246739AD0097B4CE /* Meshes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meshes.swift; sourceTree = "<group>"; };
 		46CE30EF246742150097B4CE /* Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointer.swift; sourceTree = "<group>"; };
@@ -194,6 +200,7 @@
 				4637869F24670A9D00B77415 /* RenderPipelineDescriptor.swift */,
 				463786A324670E1E00B77415 /* RenderPipelineState.swift */,
 				46CE30ED246739AD0097B4CE /* Meshes.swift */,
+				4665B663246AF94C00C00242 /* DepthStencilState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -206,6 +213,7 @@
 				4637869D24670A4300B77415 /* RenderPipelineDescriptorLibrary.swift */,
 				463786A124670E0D00B77415 /* RenderPipelineStateLibrary.swift */,
 				46CE30EB246738C60097B4CE /* MeshLibrary.swift */,
+				4665B661246AF80300C00242 /* DepthStencilStateLibrary.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -255,6 +263,7 @@
 				46CE30F1246743070097B4CE /* Node.swift */,
 				463786A824672D9100B77415 /* GameObject.swift */,
 				46CE30EF246742150097B4CE /* Pointer.swift */,
+				4665B65F246AF5E500C00242 /* Cube.swift */,
 			);
 			path = "Game Objects";
 			sourceTree = "<group>";
@@ -363,6 +372,7 @@
 				46CE3123246854300097B4CE /* Scene.swift in Sources */,
 				4637866D2466D6CF00B77415 /* ViewController.swift in Sources */,
 				46CE30F0246742150097B4CE /* Pointer.swift in Sources */,
+				4665B662246AF80300C00242 /* DepthStencilStateLibrary.swift in Sources */,
 				463786692466D6CF00B77415 /* AppDelegate.swift in Sources */,
 				463786872466E0DC00B77415 /* SIMD+extensions.swift in Sources */,
 				46CE30EE246739AD0097B4CE /* Meshes.swift in Sources */,
@@ -385,9 +395,11 @@
 				463786AB2467336A00B77415 /* Renderer.swift in Sources */,
 				46CE3125246857430097B4CE /* SandboxScene.swift in Sources */,
 				463786A224670E0D00B77415 /* RenderPipelineStateLibrary.swift in Sources */,
+				4665B664246AF94C00C00242 /* DepthStencilState.swift in Sources */,
 				4665B65C246ADABA00C00242 /* DebugCamera.swift in Sources */,
 				463786842466DC3800B77415 /* Shaders.metal in Sources */,
 				463786A024670A9D00B77415 /* RenderPipelineDescriptor.swift in Sources */,
+				4665B660246AF5E500C00242 /* Cube.swift in Sources */,
 				463786962467029E00B77415 /* ShaderLibrary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

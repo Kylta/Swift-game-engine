@@ -14,12 +14,12 @@ class Pointer: GameObject {
     init(camera: Camera) {
         self.camera = camera
         
-        super.init(meshType: .triangle, shaderType: .basic)
+        super.init(meshType: .triangle)
     }
     
     override func update(deltaTime: Float) {
-        self.update(rotation: -atan2f(GameView.position.x - self.position.x + self.camera.position.x,
-                                      GameView.position.y - self.position.y + self.camera.position.y))
+        self.update(rotation: -atan2f(Renderer.position.x - self.position.x + self.camera.position.x,
+                                      Renderer.position.y - self.position.y + self.camera.position.y))
         super.update(deltaTime: deltaTime)
     }
 }

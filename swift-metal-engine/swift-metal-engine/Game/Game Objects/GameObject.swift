@@ -9,14 +9,12 @@
 import MetalKit
 
 class GameObject: Node {
-    private let renderPipelineState: MTLRenderPipelineState
     private let mesh: Mesh
     private var modelConstants: ModelConstants
     
     private var time: Float = 0
     
-    init(meshType: MeshType, shaderType: ShaderType) {
-        self.renderPipelineState = RenderPipelineStateLibrary.shared.pipelineState(shaderType)
+    init(meshType: MeshType) {
         self.mesh = MeshLibrary.shared.mesh(meshType)
         self.modelConstants = ModelConstants()
     }
@@ -32,9 +30,10 @@ class GameObject: Node {
 
 extension GameObject: Renderable {
     func doRender(_ renderCommandEncoder: MTLRenderCommandEncoder) {
-        renderCommandEncoder.setRenderPipelineState(self.renderPipelineState)
-        renderCommandEncoder.setVertexBytes(&self.modelConstants, length: ModelConstants.size(), index: 2)
+        renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.shared.pipelineState(.basic))
+        renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.shared.depthStencilState(.less))
         renderCommandEncoder.setVertexBuffer(self.mesh.vertexBuffer, offset: 0, index: 0)
+        renderCommandEncoder.setVertexBytes(&self.modelConstants, length: ModelConstants.size(), index: 2)
         renderCommandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: self.mesh.vertexCount)
     }
 }

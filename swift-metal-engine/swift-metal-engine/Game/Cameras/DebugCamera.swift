@@ -7,13 +7,17 @@
 //
 
 import Foundation
+import simd
 
 class DebugCamera: Camera {
     var cameraType: CameraType
-    var x: Float = 0
-    var y: Float = 0
-    
     var position: float3
+    var projectionMatrix: matrix_float4x4 {
+        return matrix_float4x4.perspectiveProjection(fieldOfViewY: 45,
+                                                     aspect: Renderer.aspectRatio,
+                                                     near: 0.1,
+                                                     far: 1000)
+    }
     
     init() {
         self.cameraType = .debug
@@ -21,7 +25,7 @@ class DebugCamera: Camera {
     }
     
     func update(deltaTime: Float) {
-        self.position.x = GameView.position.x
-        self.position.y = GameView.position.y
+        self.position.x = Renderer.position.x
+        self.position.y = Renderer.position.y
     }
 }
