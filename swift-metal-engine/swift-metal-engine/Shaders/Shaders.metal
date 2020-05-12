@@ -28,6 +28,11 @@ struct SceneConstants {
     float4x4 projectionMatrix;
 };
 
+struct Material {
+    float4 color;
+    bool useMaterialColor;
+};
+
 vertex VertexOut basic_vertex_shader(const VertexIn vIn [[ stage_in ]],
                                      constant SceneConstants &sceneConstants [[ buffer(1) ]],
                                      constant ModelConstants &modelConstants [[ buffer(2) ]]) {
@@ -37,6 +42,9 @@ vertex VertexOut basic_vertex_shader(const VertexIn vIn [[ stage_in ]],
     return vout;
 }
 
-fragment half4 basic_fragment_shader(VertexOut vOut [[ stage_in ]]) {
-    return half4(vOut.color);
+fragment half4 basic_fragment_shader(VertexOut vOut [[ stage_in ]],
+                                     constant Material &material [[ buffer(0) ]]) {
+    float4 color = material.useMaterialColor ? material.color : vOut.color;
+    
+    return half4(color);
 }
