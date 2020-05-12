@@ -9,8 +9,6 @@
 import MetalKit
 
 class GameView: MTKView {
-    private(set) static var position: float2 = float2(0,0)
-    
     private let renderer: Renderer
     
     required init(coder: NSCoder) {
@@ -23,6 +21,7 @@ class GameView: MTKView {
         self.device = Engine.shared.device
         self.clearColor = Preferences.clearColor
         self.colorPixelFormat = Preferences.pixelFormat
+        self.depthStencilPixelFormat = Preferences.depthPixelFormat
     }
         
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -30,7 +29,7 @@ class GameView: MTKView {
         let x: Float = Float(loc.x / self.frame.width).lerp(min: 0.5, max: 1)
         let y: Float = -Float(loc.y / self.frame.height).lerp(min: 0.5, max: 1)
         
-        GameView.position = float2(x,y)
+        self.renderer.update(position: float2(x, y))
     }
 }
 

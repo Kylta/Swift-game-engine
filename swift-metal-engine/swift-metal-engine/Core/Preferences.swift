@@ -11,4 +11,5 @@ import MetalKit
 enum Preferences {
     public static var clearColor: MTLClearColor = .white
     public static var pixelFormat: MTLPixelFormat = .main
+    public static var depthPixelFormat: MTLPixelFormat = MTLPixelFormat.depth32Float
 }

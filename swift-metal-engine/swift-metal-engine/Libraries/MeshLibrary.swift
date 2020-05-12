@@ -11,6 +11,7 @@ import MetalKit
 enum MeshType {
     case triangle
     case quad
+    case cube
 }
 
 class MeshLibrary {
@@ -21,6 +22,7 @@ class MeshLibrary {
     private init() {
         self.meshes.updateValue(TriangleCustomMesh(), forKey: .triangle)
         self.meshes.updateValue(QuadCustomMesh(), forKey: .quad)
+        self.meshes.updateValue(CubeCustomMesh(), forKey: .cube)
     }
     
     func mesh(_ type: MeshType) -> Mesh {

@@ -9,9 +9,9 @@
 import MetalKit
 
 class Node {
-    private(set) var position: float3
-    private var scale: float3
-    private var rotation: float3
+    var position: float3
+    var scale: float3
+    var rotation: float3
     
     var modelMatrix: matrix_float4x4 {
         var matrix = matrix_identity_float4x4
@@ -30,6 +30,10 @@ class Node {
         self.scale = float3(repeating: 1)
         self.rotation = float3(repeating: 0)
         self.children = []
+    }
+    
+    func addChild(_ child: Node) {
+        self.children.append(child)
     }
     
     func render(_ renderCommandEncoder: MTLRenderCommandEncoder) {
@@ -55,9 +59,5 @@ class Node {
     
     func update(rotation: Float) {
         self.rotation.z = rotation
-    }
-    
-    func addChild(_ child: Node) {
-        self.children.append(child)
     }
 }

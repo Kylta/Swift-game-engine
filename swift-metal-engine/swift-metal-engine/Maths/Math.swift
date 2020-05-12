@@ -20,6 +20,16 @@ var Z_AXIS: float3 {
     return float3(0,0,1)
 }
 
+extension Float {
+    var toRadians: Float {
+        return (self / 180.0) * .pi
+    }
+    
+    var toDegrees: Float {
+        return self * (180.0 / .pi)
+    }
+}
+
 extension matrix_float4x4 {
     mutating func translate(direction: float3) {
         var result = matrix_identity_float4x4
@@ -95,4 +105,23 @@ extension matrix_float4x4 {
         self = matrix_multiply(self, result)
     }
     
+    static func perspectiveProjection(fieldOfViewY: Float,
+                                      aspect: Float,
+                                      near: Float,
+                                      far: Float) -> matrix_float4x4 {
+        let yScale = 1 / tan(fieldOfViewY.toRadians * 0.5)
+        let xScale = yScale / aspect
+        let zRange = far - near
+        let zScale = -(far + near) / zRange
+        let wzScale = -2 * far * near / zRange
+        
+        var result = matrix_identity_float4x4
+        result.columns = (
+            float4(xScale,0,0,0),
+            float4(0,yScale,0,0),
+            float4(0,0,zScale,-1),
+            float4(0,0,wzScale,0)
+        )
+        return result
+    }
 }

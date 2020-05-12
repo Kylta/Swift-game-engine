@@ -9,7 +9,13 @@
 import MetalKit
 
 class Renderer: NSObject, MTKViewDelegate {
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}
+    private(set) static var position: float2 = float2(repeating: 0)
+    private static var screenSize: float2 = float2(repeating: 0)
+    private(set) static var aspectRatio: Float = 0
+    
+    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+        Renderer.aspectRatio = Float(size.width / size.height)
+    }
     
     func draw(in view: MTKView) {
         guard let drawable = view.currentDrawable,
@@ -25,6 +31,9 @@ class Renderer: NSObject, MTKViewDelegate {
         
         commandBuffer.present(drawable)
         commandBuffer.commit()
-
-    }  
+    }
+    
+    func update(position: float2) {
+        Renderer.position = position
+    }
 }
