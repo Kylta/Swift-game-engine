@@ -36,13 +36,12 @@ extension GameObject: Renderable {
         renderCommandEncoder.setDepthStencilState(DepthStencilStateLibrary.shared.depthStencilState(.less))
         
         // Vertex Shader
-        renderCommandEncoder.setVertexBuffer(self.mesh.vertexBuffer, offset: 0, index: 0)
         renderCommandEncoder.setVertexBytes(&self.modelConstants, length: ModelConstants.size(), index: 2)
         
         // Fragment Shader
         renderCommandEncoder.setFragmentBytes(&self.material, length: Material.stride(), index: 0)
-        
-        renderCommandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: self.mesh.vertexCount)
+
+        self.mesh.drawPrimitives(renderCommandEncoder)
     }
 }
 

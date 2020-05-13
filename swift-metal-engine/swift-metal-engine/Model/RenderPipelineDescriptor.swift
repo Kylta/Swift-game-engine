@@ -29,3 +29,20 @@ struct BasicRenderPipelineDescriptor: RenderPipelineDescriptor {
         self.renderPipelineDescriptor.vertexDescriptor = VertexDescriptorLibrary.shared.descriptor(.basic)
     }
 }
+
+struct InstancedRenderPipelineDescriptor: RenderPipelineDescriptor {
+    var name: String {
+        return "Instanced Render Pipeline Descriptor"
+    }
+    
+    private(set) var renderPipelineDescriptor: MTLRenderPipelineDescriptor!
+    
+    init() {
+        self.renderPipelineDescriptor = MTLRenderPipelineDescriptor()
+        self.renderPipelineDescriptor.colorAttachments[0].pixelFormat = Preferences.pixelFormat
+        self.renderPipelineDescriptor.depthAttachmentPixelFormat = Preferences.depthPixelFormat
+        self.renderPipelineDescriptor.vertexFunction = ShaderLibrary.shared.vertexFunction(.instanced)
+        self.renderPipelineDescriptor.fragmentFunction = ShaderLibrary.shared.fragmentFunction(.basic)
+        self.renderPipelineDescriptor.vertexDescriptor = VertexDescriptorLibrary.shared.descriptor(.basic)
+    }
+}

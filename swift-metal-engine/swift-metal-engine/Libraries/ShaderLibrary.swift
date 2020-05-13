@@ -10,26 +10,32 @@ import MetalKit
 
 enum ShaderType {
     case basic
+    case instanced
 }
 
 class ShaderLibrary {
-    private var shaders: [ShaderType: (vertex: Shader, fragment: Shader)] = [:]
+    private var vertexShaders: [ShaderType: Shader] = [:]
+    private var fragmentShaders: [ShaderType: Shader] = [:]
     private(set) var library: MTLLibrary!
     
     static let shared = ShaderLibrary()
     
     private init() {
         self.library = Engine.shared.device.makeDefaultLibrary()
-        let basicVertex = BasicVertexShader(library: library)
-        let basicFragment = BasicFragmentShader(library: library)
-        self.shaders.updateValue((basicVertex, basicFragment), forKey: .basic)
+        
+        // Vertex
+        self.vertexShaders.updateValue(BasicVertexShader(library: library), forKey: .basic)
+        self.vertexShaders.updateValue(InstancedVertexShader(library: library), forKey: .instanced)
+        
+        // Fragments
+        self.fragmentShaders.updateValue(BasicFragmentShader(library: library), forKey: .basic)
     }
     
     func vertexFunction(_ shaderType: ShaderType) -> MTLFunction {
-        return shaders[shaderType]!.vertex.function
+        return self.vertexShaders[shaderType]!.function
     }
     
     func fragmentFunction(_ shaderType: ShaderType) -> MTLFunction {
-        return shaders[shaderType]!.fragment.function
+        return self.fragmentShaders[shaderType]!.function
     }
 }

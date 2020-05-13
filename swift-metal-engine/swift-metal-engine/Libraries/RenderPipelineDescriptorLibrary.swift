@@ -15,6 +15,7 @@ class RenderPipelineDescriptorLibrary {
     
     private init() {
         self.renderPipelineDescriptors.updateValue(BasicRenderPipelineDescriptor(), forKey: .basic)
+        self.renderPipelineDescriptors.updateValue(InstancedRenderPipelineDescriptor(), forKey: .instanced)
     }
     
     func descriptor(_ shaderType: ShaderType) -> MTLRenderPipelineDescriptor {

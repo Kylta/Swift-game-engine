@@ -11,11 +11,15 @@ import MetalKit
 protocol Mesh {
     var vertexBuffer: MTLBuffer! { get }
     var vertexCount: Int! { get }
+    
+    func setInstanceCount(_ count: Int)
+    func drawPrimitives(_ renderCommandEncoder: MTLRenderCommandEncoder)
 }
 
 class CustomMesh: Mesh {
     var vertices: [Vertex]!
     var vertexBuffer: MTLBuffer!
+    var instanceCount: Int = 1
     var vertexCount: Int! {
         return self.vertices.count
     }
@@ -28,6 +32,19 @@ class CustomMesh: Mesh {
     }
     
     func createVertices() {}
+    
+    func setInstanceCount(_ count: Int) {
+        self.instanceCount = count
+    }
+    
+    func drawPrimitives(_ renderCommandEncoder: MTLRenderCommandEncoder) {
+        renderCommandEncoder.setVertexBuffer(self.vertexBuffer, offset: 0, index: 0)
+        
+        renderCommandEncoder.drawPrimitives(type: .triangle,
+                                            vertexStart: 0,
+                                            vertexCount: self.vertexCount,
+                                            instanceCount: self.instanceCount)
+    }
 }
 
 class CubeCustomMesh: CustomMesh {
