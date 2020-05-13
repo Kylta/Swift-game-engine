@@ -42,6 +42,18 @@ vertex VertexOut basic_vertex_shader(const VertexIn vIn [[ stage_in ]],
     return vout;
 }
 
+vertex VertexOut instanced_vertex_shader(const VertexIn vIn [[ stage_in ]],
+                                         constant SceneConstants &sceneConstants [[ buffer(1) ]],
+                                         constant ModelConstants *modelConstants [[ buffer(2) ]],
+                                         uint instanceID [[ instance_id ]]) {
+    VertexOut vout;
+    ModelConstants modelConstant = modelConstants[instanceID];
+    
+    vout.position = sceneConstants.projectionMatrix * sceneConstants.viewMatrix * modelConstant.modelMatrix * float4(vIn.position, 1);
+    vout.color = vIn.color;
+    return vout;
+}
+
 fragment half4 basic_fragment_shader(VertexOut vOut [[ stage_in ]],
                                      constant Material &material [[ buffer(0) ]]) {
     float4 color = material.useMaterialColor ? material.color : vOut.color;

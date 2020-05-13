@@ -15,6 +15,7 @@ class RenderPipelineStateLibrary {
     
     private init() {
         self.renderPipelineState.updateValue(BasicRenderPipelineState(), forKey: .basic)
+        self.renderPipelineState.updateValue(InstancedRenderPipelineState(), forKey: .instanced)
     }
     
     func pipelineState(_ shaderType: ShaderType) -> MTLRenderPipelineState {

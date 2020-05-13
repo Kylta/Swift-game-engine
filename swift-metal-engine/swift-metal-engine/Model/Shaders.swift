@@ -47,3 +47,20 @@ struct BasicFragmentShader: Shader {
         function.label = name
     }
 }
+
+struct InstancedVertexShader: Shader {
+    var name: String {
+        return "Instanced Vertex Shader"
+    }
+    
+    var functionName: String {
+        return "instanced_vertex_shader"
+    }
+    
+    private(set) var function: MTLFunction!
+    
+    init(library: MTLLibrary) {
+        self.function = library.makeFunction(name: functionName)!
+        function.label = name
+    }
+}

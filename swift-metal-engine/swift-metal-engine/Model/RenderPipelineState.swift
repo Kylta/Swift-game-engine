@@ -25,3 +25,16 @@ struct BasicRenderPipelineState: RenderPipelineState {
         self.renderPipelineState = try! Engine.shared.device.makeRenderPipelineState(descriptor: desc)
     }
 }
+
+struct InstancedRenderPipelineState: RenderPipelineState {
+    var name: String {
+        return "Instanced Render Pipeline State"
+    }
+    
+    private(set) var renderPipelineState: MTLRenderPipelineState!
+    
+    init() {
+        let desc = RenderPipelineDescriptorLibrary.shared.descriptor(.instanced)
+        self.renderPipelineState = try! Engine.shared.device.makeRenderPipelineState(descriptor: desc)
+    }
+}
